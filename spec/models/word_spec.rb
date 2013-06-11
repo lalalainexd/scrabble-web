@@ -13,7 +13,19 @@ describe Word do
     it "does not allow non-letters in words"
   end
 
+  describe 'create_with_score' do
+    it "creates a word with a score" do
+
+      Word.stub(:compute_score).with('hello').and_return(8)
+      word = Word.create_with_score(word: "hello")
+      expect(word.score).to eq(8)
+
+    end
+  end
+
   describe '.compute_score' do
-    it "scores hello as 8"
+    it "scores hello as 8" do
+      expect(Word.compute_score("hello")).to eq(8)
+    end
   end
 end

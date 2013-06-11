@@ -2,14 +2,14 @@ require 'spec_helper'
 
 describe "the basic scoring of a word" do
   describe "/words" do
-    xit "allows the input of a word and returns a score" do
+    it "allows the input of a word and returns a score" do
       visit '/words'
       fill_in 'word[word]', :with => "hello"
       click_link_or_button 'Score Word'
       expect(current_path).to eq '/words'
       within('#last_word') do
         within('#word') do
-          expect(page).to have_content('hello')  
+          expect(page).to have_content('hello')
         end
         within('#score') do
           expect(page).to have_content('8')
@@ -17,7 +17,7 @@ describe "the basic scoring of a word" do
       end
     end
 
-    xit "does not score a blank input" do
+    it "does not score a blank input" do
       visit '/words'
       fill_in 'word[word]', :with => ""
       click_link_or_button 'Score Word'
@@ -59,6 +59,6 @@ describe "the basic scoring of a word" do
         end
       end
     end
-  
+
   end
 end
